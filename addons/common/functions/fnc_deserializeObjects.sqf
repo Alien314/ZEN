@@ -156,7 +156,8 @@ private _fnc_deserializeVehicle = {
         [_vehicle, "", []] call BIS_fnc_initVehicle;
     } else {
         _customization params ["_textures", "_animations"];
-        [_vehicle, _textures, _animations, true] call BIS_fnc_initVehicle;
+        [{ _this call BIS_fnc_initVehicle; }, [_vehicle, _textures, _animations, true], 1] call cba_fnc_waitAndExecute;
+        
     };
 
     {
